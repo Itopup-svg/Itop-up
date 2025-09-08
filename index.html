@@ -214,7 +214,10 @@
   <!-- Première étape -->
   <div class="final-message" id="finalMessage">
     <h2>Abonneo kely lo ny page-ko de mpotra lay site sy tuto aveo, amarinko io fa haaaiinnn 🥴🥴</h2>
-    <a href="https://www.facebook.com/profile.php?id=61575977721256" target="_blank" class="fb-link">👉 Tsindrio eto</a>
+    <a href="https://www.facebook.com/profile.php?id=61575977721256" 
+       target="_blank" 
+       class="fb-link" 
+       id="fbLink">👉 Tsindrio eto</a>
   </div>
 
   <!-- Étape upload preuve -->
@@ -236,11 +239,11 @@
     const spinner = document.getElementById("spinner");
 
     // Rehefa tsindriana ilay "Tsindrio eto"
-    fbLink.addEventListener("click", () => {
-      setTimeout(() => {
-        finalMessage.style.display = "none";
-        proofSection.classList.add("show"); // fade in
-      }, 2000);
+    fbLink.addEventListener("click", (e) => {
+      e.preventDefault(); // tsy handeha mivantana aloha ny lien
+      finalMessage.style.display = "none";
+      proofSection.classList.add("show"); // miseho avy hatrany
+      window.open(fbLink.href, "_blank"); // misokatra any amin'ny Facebook
     });
 
     // Rehefa tsindriana "VITA"
