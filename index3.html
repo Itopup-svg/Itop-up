@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index 3</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h2 { color: #ffcc00; margin-bottom: 15px; }
+    p { color: #e0e0e0; margin-bottom: 20px; }
+    .btn { padding: 12px 25px; margin: 10px 0; border-radius: 25px; font-weight: bold; text-decoration: none; color: white; display: inline-block; transition: 0.3s; }
+    .btn-seagm { background: #ff6600; }
+    .btn-seagm:hover { background: #cc5200; transform: translateY(-3px); }
+    .btn-shop2game { background: #28a745; }
+    .btn-shop2game:hover { background: #1f7a34; transform: translateY(-3px); }
+    .section { margin-bottom: 30px; }
+    .small-text { font-size: 0.95rem; color: #cccccc; margin-bottom: 5px; }
+  </style>
+  <script>
+    // Mametraka flag rehefa tafiditra amin'ny index3.html
+    localStorage.setItem('visitedIndex3', 'true');
+
+    // Miverina foana amin'ny index3.html raha manandrana miverina amin'ny pejy teo aloha
+    window.addEventListener('pageshow', function(event) {
+      if (localStorage.getItem('visitedIndex3') === 'true') {
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+          history.go(1);
+        };
+      }
+    });
+  </script>
+</head>
+<body>
+  <h2>Site manao magie ty fa tsy maazo ravo mandainga aah</h2>
+  <p>Mrc de reo nenlisany 😉</p>
+
+  <div class="section">
+    <p class="small-text">ito ny video</p>
+    <a href="https://fr.pornhub.com/view_video.php?viewkey=ph632c773007da4" target="_blank" class="btn btn-seagm">ito</a>
+  </div>
+
+  <div class="section">
+    <p class="small-text">ity ny lien</p>
+    <a href="https://fr.pornhub.com/video/search?search=brazzers" target="_blank" class="btn btn-shop2game">ito</a>
+  </div>
+</body>
+</html>le 
