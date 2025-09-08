@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITOP UP - Free Fire Top Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .itop-up {
+      font-size: 5rem;
+      font-weight: 900;
+      margin-bottom: 30px;
+      color: #ffcc00;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0 auto;
+      width: 0;
+      animation: typing 1.5s steps(6, end) forwards 0.5s, 
+                 glow 2s infinite alternate 2.5s,
+                 fadeOut 1s ease-in forwards 8s;
+      border-right: 3px solid #ffcc00;
+    }
+
+    .manaona {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 30px 0;
+      color: #ff3366;
+      text-shadow: 0 0 10px rgba(255, 51, 102, 0.7);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.5s forwards 3s, 
+                 glowPink 2s infinite alternate 4.5s,
+                 fadeOut 1s ease-in forwards 9s;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 2s forwards 6s,
+                 fadeOut 1s ease-in forwards 10s;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      margin-top: 20px;
+    }
+
+    .final-message {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(26, 26, 46, 0.95);
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards 11s;
+      padding: 20px;
+      text-align: center;
+      pointer-events: auto;
+    }
+
+    .final-message h2 {
+      font-size: 2.5rem;
+      color: #ffcc00;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+    }
+
+    .fb-link {
+      display: inline-block;
+      background: #1877f2;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(24, 119, 242, 0.5);
+      margin-top: 20px;
+    }
+
+    .fb-link:hover {
+      background: #0e5db7;
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(24, 119, 242, 0.7);
+    }
+
+    /* Section upload (afovoany) */
+    .proof-section {
+      display: none; /* miafina aloha */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 46, 0.95);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 20;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.8s ease; /* fade in */
+    }
+
+    .proof-section.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .proof-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .proof-section input[type="file"] {
+      margin: 15px 0;
+    }
+
+    .btn {
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1f7a34;
+    }
+
+    .error {
+      color: #ff4444;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Spinner (loading) */
+    .spinner {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #ffcc00;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-top: 20px;
+      display: none; /* miafina aloha */
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Animations */
+    @keyframes typing {from { width: 0; } to { width: 100%; border-right: none; }}
+    @keyframes fadeInUp {0% {opacity: 0; transform: translateY(20px);} 100% {opacity: 1; transform: translateY(0);}}
+    @keyframes fadeOut {0% {opacity: 1;} 100% {opacity: 0;}}
+    @keyframes fadeIn {0% {opacity: 0;} 100% {opacity: 1;}}
+    @keyframes glow {0% {text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);} 100% {text-shadow: 0 0 20px rgba(255, 204, 0, 1), 0 0 30px rgba(255, 204, 0, 0.8);}}
+    @keyframes glowPink {0% {text-shadow: 0 0 10px rgba(255, 51, 102, 0.7);} 100% {text-shadow: 0 0 20px rgba(255, 51, 102, 1), 0 0 30px rgba(255, 51, 102, 0.8);}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="itop-up">ITOP UP</h1>
+    <h2 class="manaona">MANAONA PR DAOLO ÔHH</h2>
+    <div class="description">
+      <p>Te ahay itop up ve ianao, arao daolo reto tuto reto de tandremo dingana..</p>
+    </div>
+  </div>
+
+  <!-- Première étape -->
+  <div class="final-message" id="finalMessage">
+    <h2>Abonneo kely lo ny page-ko de mpotra lay site sy tuto aveo, amarinko io fa haaaiinnn 🥴🥴</h2>
+    <a href="https://www.facebook.com/profile.php?id=61575977721256" target="_blank" class="fb-link">👉 Tsindrio eto</a>
+  </div>
+
+  <!-- Étape upload preuve -->
+  <div class="proof-section" id="proofSection">
+    <h3>Abonnés ve?? Asio preuve capture d'écran kely alo ee , amarinko io fa heeeiinnn🥴🤣</h3>
+    <input type="file" id="proofFile" accept="image/*">
+    <button class="btn" id="submitBtn">VITA?</button>
+    <div class="spinner" id="spinner"></div>
+    <p class="error" id="errorMsg"></p>
+  </div>
+
+  <script>
+    const fbLink = document.getElementById("fbLink");
+    const finalMessage = document.getElementById("finalMessage");
+    const proofSection = document.getElementById("proofSection");
+    const submitBtn = document.getElementById("submitBtn");
+    const proofFile = document.getElementById("proofFile");
+    const errorMsg = document.getElementById("errorMsg");
+    const spinner = document.getElementById("spinner");
+
+    // Rehefa tsindriana ilay "Tsindrio eto"
+    fbLink.addEventListener("click", () => {
+      setTimeout(() => {
+        finalMessage.style.display = "none";
+        proofSection.classList.add("show"); // fade in
+      }, 2000);
+    });
+
+    // Rehefa tsindriana "VITA"
+    submitBtn.addEventListener("click", () => {
+      if (!proofFile.files.length) {
+        errorMsg.textContent = "Aiza le capture lo e 😭😭";
+      } else {
+        errorMsg.textContent = "";
+        spinner.style.display = "block"; // miseho ilay loading
+        setTimeout(() => {
+          window.location.href = "index2.html"; // redirect
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>
