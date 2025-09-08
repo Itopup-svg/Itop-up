@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITOP UP - Étape Finale</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      padding: 20px;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #e0e0e0;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-coms {
+      background: #1877f2;
+      box-shadow: 0 0 15px rgba(24, 119, 242, 0.5);
+    }
+
+    .btn-coms:hover {
+      background: #0e5db7;
+      transform: translateY(-3px);
+    }
+
+    .btn-vita {
+      background: #28a745;
+      box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-vita:hover {
+      background: #1f7a34;
+      transform: translateY(-3px);
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .error {
+      color: #ff4444;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* Loader */
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #ffcc00;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Réaction sy coms kely farany lo fa tsy te aazo anle site sy tuto ve ee 😭😭</h2>
+    <p>Tsy adino capture zanjy aa 😉😉</p>
+
+    <input type="file" id="proofFile" accept="image/*">
+
+    <div>
+      <a href="https://www.facebook.com/100040538947167/posts/pfbid02yteRTUkKwGC5xJneYoiwaFTtGhnnjwqeRRL9ECsRUTq5TvPAeFjtusZfZnoY6sdtl/?app=fbl" 
+         target="_blank" 
+         class="btn btn-coms">👉 Coms eto</a>
+      <button class="btn btn-vita" id="submitBtn">✅ Vita?</button>
+    </div>
+
+    <p class="error" id="errorMsg"></p>
+
+    <div class="loader" id="loader"></div>
+  </div>
+
+  <script>
+    const submitBtn = document.getElementById("submitBtn");
+    const proofFile = document.getElementById("proofFile");
+    const errorMsg = document.getElementById("errorMsg");
+    const loader = document.getElementById("loader");
+
+    submitBtn.addEventListener("click", () => {
+      if (!proofFile.files.length) {
+        errorMsg.textContent = "Aiza ilay preuve e 😭😭";
+      } else {
+        errorMsg.textContent = "";
+        loader.style.display = "block"; // aseho ny loader
+
+        // redirect aorian'ny 2s
+        setTimeout(() => {
+          window.location.href = "index3.html";
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>
